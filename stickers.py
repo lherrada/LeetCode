@@ -15,6 +15,8 @@
 # any non-'facebook' letters, and the only potential non-letter characters
 # in the string are spaces.
 
+#Level: easy
+
 word=list("facebook")
 
 myinput="ccooffee"
