@@ -1,4 +1,6 @@
+#!/usr/local/bin/python3
 #Given a string s, find the longest palindromic subsequence's length in s.
+#https://leetcode.com/problems/longest-palindromic-substring/
 # You may assume that the maximum length of s is 1000.
 
 #Level: intermediate
