@@ -8,12 +8,15 @@ class Stack:
     def pop(self):
         return self.StackArray.pop()
 
+    def peek(self):
+        return self.StackArray[-1]
+
     def __repr__(self):
         return str(self.StackArray)
 
     def __len__(self):
         return len(self.StackArray)
-
+   
 
 if __name__ == '__main__':
     mystack=Stack()
