@@ -1,3 +1,6 @@
+#Learning Reference:
+#https://www.youtube.com/watch?v=HqPJF2L5h9U
+
 class Heapify:
     def __init__(self, mylist):
         self.heaplist = [0] + mylist
@@ -16,7 +19,8 @@ class Heapify:
             self.heaplist[i] = self.heaplist[i] ^ self.heaplist[j]
             self.heaplist[j] = self.heaplist[i] ^ self.heaplist[j]
             self.heaplist[i] = self.heaplist[i] ^ self.heaplist[j]
-
+ 
+    #Using recursion to heapify subtrees
     def heapifySubTree(self, i):
         if 2 * i > self.currentsize:
             return
