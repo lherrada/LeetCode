@@ -1,6 +1,7 @@
 """
 Given a maze, find a possible solution between two points
-This is a recursive solution
+This is a non-recursive solution
+
 matrix = [['.', 'X', '.', '.', 'G'],
           ['.', 'X', '.', 'X', '.'],
           ['.', '.', '.', 'X', '.'],
