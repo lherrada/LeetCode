@@ -1,6 +1,8 @@
 """
 Given a maze, find a possible solution between two points
 I make use of backtrack algorithm.
+S = Start
+G = Goal
 
 This is a non-recursive solution
 
