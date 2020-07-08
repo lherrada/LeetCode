@@ -1,5 +1,7 @@
 """
 Given a maze, find a possible solution between two points
+I make use of backtrack algorithm.
+
 This is a non-recursive solution
 
 matrix = [['.', 'X', '.', '.', 'G'],
