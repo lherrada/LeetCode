@@ -67,18 +67,20 @@ def solveMazeUtil(maze, x, y, sol, visited):
         # mark x, y as part of solution path
         sol[x][y] = 1
 
-        # Move forward in x direction
+        # Move downward in x direction
         if solveMazeUtil(maze, x + 1, y, sol, visited) is True:
             return True
 
         # If moving in x direction doesn't give solution
-        # then Move down in y direction
+        # then Move right in y direction
         if solveMazeUtil(maze, x, y + 1, sol, visited) is True:
             return True
-
+	
+	# Move upward in x direction
         if solveMazeUtil(maze, x - 1, y, sol, visited) is True:
             return True
-
+	
+	# Move left in y direction
         if solveMazeUtil(maze, x, y - 1, sol, visited) is True:
             return True
 
