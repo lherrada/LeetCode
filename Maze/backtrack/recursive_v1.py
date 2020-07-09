@@ -1,6 +1,7 @@
 # Python3 program to solve Rat in a Maze
 # problem using backtracking
 """ First version authored by Shiv Shankar.
+    https://www.geeksforgeeks.org/rat-in-a-maze-backtracking-2/
     I extended to the 4 directions: up,down,left,right
     This function solves the Maze problem using Backtracking.
     It mainly uses solveMazeUtil() to solve the problem. It
