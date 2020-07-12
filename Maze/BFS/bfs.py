@@ -37,9 +37,8 @@ def addNeighbors(current, parent):
         nrow = cr + rows[i]
         ncolumn = cc + columns[i]
         if nrow < 0 or nrow >= len(maze): continue
-        if ncolumn < 0 or ncolumn >= len(maze): continue
+        if ncolumn < 0 or ncolumn >= len(maze[0]): continue
         if maze[nrow][ncolumn] is '#': continue
-        #
         if visited[nrow][ncolumn] is 1: continue
         parent[(nrow, ncolumn)] = current
         q.put((nrow, ncolumn))
@@ -61,14 +60,13 @@ def solveMaze(current, end):
 def print_solution(target, solDict):
     yellow = '\033[93m'
     endcolor = '\33[0m'
-    solution = [[0 for _ in range(len(maze))] for _ in range(len(maze))]
     while target:
         row = target[0]
         column = target[1]
-        solution[row][column] = yellow + str(1) + endcolor
+        maze[row][column] = yellow + str(1) + endcolor
         target = solDict[target]
 
-    for i in solution:
+    for i in maze:
         for j in i:
             print(j, end=' ')
         print()
@@ -78,18 +76,27 @@ def print_solution(target, solDict):
 def find_start_end(maze):
     p = {}
     for i in range(len(maze)):
-        for j in range(len(maze)):
+        for j in range(len(maze[i])):
             if maze[i][j] is 'S' or maze[i][j] is 'G':
                 p.setdefault(maze[i][j], (i, j))
                 if len(p.keys()) is 2:
                     return p
 
 
+def readMazeFromFile(f):
+    maze = list()
+    with open(f) as file:
+        for line in file:
+            maze.append(list(line.rstrip()))
+    return maze
+
+
 columns = [0, 0, -1, 1]
 rows = [-1, 1, 0, 0]
 q = Queue()
-maze = createMaze()
-visited = [[0 for _ in range(len(maze))] for _ in range(len(maze))]
+#maze = createMaze()
+maze = readMazeFromFile("maze1.txt")
+visited = [[0 for _ in range(len(maze[0]))] for _ in range(len(maze))]
 
 location = find_start_end(maze)
 start = location['S']
