@@ -39,21 +39,21 @@ def sum2(array, mysum):
 
     return [(i, j) for (i, j) in solution.items()]
 
-
 def sum3(array, mysum):
-    result = set()
+    H = {}
+    solution = set()
     size = len(array) - 2
-    track = []
     for i in range(size):
-        num = array.pop(0)
-        if num in track:
-            continue
-        track.append(num)
-        solution = sum2(array, mysum - num)
-        solution = [tuple(sorted((num,) + j)) for j in solution]
-        for k in solution:
-            result.add(k)
-    return result
+        num = array[i]
+        if num not in H:
+            H[num] = sum2(array[i + 1:], mysum - num)
+
+    for k, v in H.items():
+        for i in v:
+          solution.add(tuple(sorted((k,) + i)))
+
+    return solution
+
 
 
 a = [-1, 0, 1, 2, -1, -4]
