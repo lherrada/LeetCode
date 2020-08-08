@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/4sum/solution/
+"""
+
 class Ksum():
     def sumk(self, array: list, target: int, k: int) -> list:
         H = {}
