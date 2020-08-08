@@ -1,6 +1,10 @@
 """
+<<<<<<< HEAD
 Level: Medium
 https://leetcode.com/problems/4sum/
+=======
+https://leetcode.com/problems/4sum/solution/
+>>>>>>> d0aa8a49f565a1d5d19ebc61d81b7b8a064d0d24
 
 Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
 
@@ -18,11 +22,16 @@ A solution set is:
   [-2, -1, 1, 2],
   [-2,  0, 0, 2]
 ]
+<<<<<<< HEAD
 
 Posted my solution on Leetcode Discuss forum
 https://leetcode.com/problems/4sum/discuss/757027/K-sum%3A-not-sorted-array-required
 
 """
+=======
+"""
+
+>>>>>>> d0aa8a49f565a1d5d19ebc61d81b7b8a064d0d24
 class Ksum():
     def sumk(self, array: list, target: int, k: int) -> list:
         H = {}
