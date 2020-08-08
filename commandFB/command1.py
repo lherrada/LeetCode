@@ -1,0 +1,39 @@
+#!/usr/local/bin/python3
+# I want to monitor a value produced from a streaming app; say one of the swap columns from
+# vmstat. If the value exceeds a given threshold X for more than Y consecutive samples I'd
+# like a message printed out.
+#
+# The command should take standard input and be invoked as:
+#
+# yourscript <column_number> <repetitions> <threshold value>
+#
+# Example: vmstat 1 | yourscript 7 5 200
+#
+# That means that when the value of column 7 has gone over 200 for more than 5 times in a row,
+# print something out. My plan is to leave this running over night and check back on
+# it in the morning.
+# 5  4      0 554724 1698688 32809648  200    0     0  1439 3177 10347 30  1 51 18  0
+# 5  4      0 556532 1698688 32809712  201    0     0  1304 3168 6853  31  1 58 11  0
+# 5  4      0 517944 1698696 32809792    0    0     0  1360 3345 10589 31  1 53 15  0
+# 6  4      0 477476 1698748 32836968  300    0     4  1459 3819 20150 39  2 42 17  0
+# 6  4      0 477476 1698748 32836968  700    0     4  1459 3819 20150 39  2 42 17  0
+
+import sys
+
+column_number = int(sys.argv[1])
+repetitions = int(sys.argv[2])
+threshold = int(sys.argv[3])
+
+count=0
+for line in sys.stdin:
+ try:
+   metric=float(line.split()[column_number]) 
+   if metric > threshold:
+        count+=1
+        if count > repetitions:
+          print("Threshold reach: ",line)
+          count=0
+   else:
+       count=0	  
+ except Exception as e:
+   pass 
