@@ -103,6 +103,42 @@ class Solution:
                 distance[neighbor_row][neighbor_col] = distance[current_node[0]][current_node[1]] + 1
                 q.append([neighbor_row, neighbor_col])
         return -1
+  
+    #Time complexity: O(m.n)
+    #Space complexity: O(m + n)	
+    #Setting visited nodes in-place
+    def BFS_improved(self, maze: list[list[str]], start: list[int]) -> int:
+        #Time complexity = O(n.m)
+        #Space complexity = O(n + m)
+        directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+        nrows = len(maze)
+        ncols = len(maze[0])
+        q = deque()
+        if start[0] >= nrows or start[1] >= ncols or array2d[start[0]][start[1]] == 'X':
+            return -1
+        q.append(start)
+        maze[start[0]][start[1]] = 'X'
+        level = 0
+        while q:
+            size_q = len(q)
+            level += 1
+            while size_q > 0:
+                current_row, current_col = q.popleft()
+                size_q -= 1
+                for direction in directions:
+                    neighbor_row = current_row + direction[0]
+                    neighbor_col = current_col + direction[1]
+                    if 0 <= neighbor_row < nrows and 0 <= neighbor_col < ncols and maze[neighbor_row][
+                        neighbor_col] != 'X':
+                        q.append([neighbor_row, neighbor_col])
+                        if maze[neighbor_row][neighbor_col] == 'D':
+                            return level
+                        maze[neighbor_row][neighbor_col] = 'X'
+        return -1
+   
+
+
+	
 
     #Depth First Search (recursive)
     #Time complexity: O(m.n)
