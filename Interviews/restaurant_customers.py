@@ -79,8 +79,29 @@ class Solution:
             ans = max(ans, s)
         return ans
 
+    #ChatGPT solution.
+    # Not passing one test for a input with 200,000 in cses.fi website
+    def maximum_customers(self, n, customers):
+        events = []
 
+    # Create events for each customer
+        for a, b in customers:
+           events.append((a, 1))  # Arrival event
+           events.append((b, -1)) # Leaving event
 
+    # Sort events: first by time, then leaving before arrival if they are the same time
+        events.sort(key=lambda x: (x[0], x[1]))
+
+    # Track the maximum number of customers
+        current_customers = 0
+        max_customers = 0
+
+    # Process each event
+        for event in events:
+          current_customers += event[1]  # +1 for arrival, -1 for leaving
+          max_customers = max(max_customers, current_customers)
+
+        return max_customers
 
 sol = Solution()
 # n = 3
