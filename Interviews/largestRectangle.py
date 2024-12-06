@@ -41,6 +41,11 @@ def largestRectangle(h: list[int]) -> int:
 # Optimal Solution:
 # Time complexity: O(n)
 # Space complexity: O(n)
+#Approach is to find the area that can be formed to the left of the bar
+# and to the right of the bar. To do so, we need to figure out the index in both
+# directions (left and right). Once calculated the index, calculating the area for
+# the given bar is straightforward.
+
 def largestRectangle_v2(h: list[int]) -> int:
     #Building left limit
     stack = []
